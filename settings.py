@@ -5,14 +5,12 @@ import os
 SECRET_KEY = '=r-$b*8hglm+858&9t043hlm6-&6-3d3vfc4((7yd0dbrakhvi'
 
 INSTALLED_APPS = (
+    'djangoappengine',
     'djangotoolbox',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'guestbook',
-    
-    # djangoappengine should come last, so it can override a few manage.py commands
-    'djangoappengine',
+    'diary',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -25,7 +23,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
 
-LOGIN_REDIRECT_URL = '/guestbook/'
+LOGIN_REDIRECT_URL = '/diary/'
 
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
