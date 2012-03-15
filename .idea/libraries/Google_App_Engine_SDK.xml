@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="file:///usr/local/google_appengine" />
       <root url="file:///usr/local/google_appengine/lib/antlr3" />
+      <root url="file:///usr/local/google_appengine/lib/argparse" />
       <root url="file:///usr/local/google_appengine/lib/cacerts" />
       <root url="file:///usr/local/google_appengine/lib/enum" />
       <root url="file:///usr/local/google_appengine/lib/fancy_urllib" />
