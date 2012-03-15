@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     (r'^diary/', include('diary.urls')),
 
     (r'^accounts/create_user/$', 'diary.views.create_new_user'),
-    (r'^accounts/login/$', 'django.contrib.auth.views.login',
+    (r'^accounts/login/$', 'diary.views.login',
         {'authentication_form': AuthenticationForm,
         'template_name': 'diary/login.html',}),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout',

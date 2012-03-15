@@ -1,4 +1,5 @@
 from django.core.cache import cache
+from django.conf import settings
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.simple import direct_to_template
 from django.http import HttpResponseRedirect
@@ -41,3 +42,7 @@ def create_new_user(request):
         form = UserCreationForm()
     return direct_to_template(request, 'diary/user_create_form.html',
         {'form': form})
+
+def login(request):
+    redirect_to = settings.LOGIN_REDIRECT_URL
+    return HttpResponseRedirect(redirect_to)

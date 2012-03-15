@@ -14,7 +14,7 @@
     [<a href="{% url django.contrib.auth.views.logout %}">sign out</a>]
   {% else %}
     World!
-    [<a href="{% url django.contrib.auth.views.login %}">sign in</a>]
+    [<a href="{% url diary.login %}">sign in</a>]
   {% endif %}
 
   {% block content %}{% endblock %}
