@@ -10,6 +10,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'gaeauth',
     'diary',
 )
 
@@ -32,4 +33,7 @@ TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 ROOT_URLCONF = 'urls'
 
 
-AUTHENTICATION_BACKENDS = ('diary.auth_backends.GoogleBackend',)
+AUTHENTICATION_BACKENDS = ('gaeauth.backends.GoogleAccountBackend',)
+
+ALLOWED_EMAILS = ('yousilin@gmail.com',
+                 'mendymeng.1206@gmail.com',)

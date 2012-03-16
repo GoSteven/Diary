@@ -7,10 +7,8 @@ urlpatterns = patterns('',
     (r'^$', 'django.views.generic.simple.redirect_to', {'url': '/diary/', }),
     (r'^diary/', include('diary.urls')),
 
-    (r'^accounts/create_user/$', 'diary.views.create_new_user'),
-    (r'^accounts/login/$', 'diary.views.login',
-        {'authentication_form': AuthenticationForm,
-        'template_name': 'diary/login.html',}),
-    (r'^accounts/logout/$', 'django.contrib.auth.views.logout',
-        {'next_page': '/diary/',}),
+    (r'^accounts/', include('gaeauth.urls')),
+    (r'^invalid', 'django.views.generic.simple.direct_to_template',{'template':'invalid.html'}),
+    #(r'.+\.html$', 'django.views.generic.simple.direct_to_template'),
+
 )

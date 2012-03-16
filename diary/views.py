@@ -29,20 +29,6 @@ def create_greeting(request):
             cache.delete(MEMCACHE_GREETINGS)
     return HttpResponseRedirect('/diary/')
 
-def create_new_user(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            # user must be active for login to work
-            user.is_active = True
-            user.save()
-            return HttpResponseRedirect('/diary/')
-    else:
-        form = UserCreationForm()
-    return direct_to_template(request, 'diary/user_create_form.html',
-        {'form': form})
-
 def login(request):
     redirect_to = settings.LOGIN_REDIRECT_URL
     return HttpResponseRedirect(redirect_to)

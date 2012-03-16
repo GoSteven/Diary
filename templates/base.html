@@ -7,14 +7,13 @@
     <link type="text/css" rel="stylesheet" href="/media/main.css" />
   </head>
 
-  <a href="/accounts/create_user/">Create User</a>
-  Hello
+
   {% if user.is_authenticated %}
+      Hello
     {{ user.username }}
-    [<a href="{% url django.contrib.auth.views.logout %}">sign out</a>]
+    [<a href="{% url gaeauth.views.logout %}">sign out</a>]
   {% else %}
-    World!
-    [<a href="{% url diary.login %}">sign in</a>]
+    [<a href="{% url gaeauth.views.login %}">sign in</a>]
   {% endif %}
 
   {% block content %}{% endblock %}
