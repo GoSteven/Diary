@@ -1,17 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h2>Top 10 Most Recent diary Entries</h2>
-  {% for greeting in greetings %}
-    {% if greeting.author %}
-      <b>{{ greeting.author.username }}</b> wrote:
-    {% else %}
-      An anonymous person wrote:
-    {% endif %}
-    <blockquote>{{ greeting.content|escape }}</blockquote>
-  {% endfor %}
+  <div class="content">
 
-  <form action="/diary/sign" method="post">{% csrf_token %}
-    <table>{{ form }}</table>
-    <input type="submit" value="Sign diary" />
-  </form>
+      <h2>muuuummmmaaa wanna say:</h2>
+        <ul>
+        {% for greeting in greetings %}
+          <li>
+            <div class="contentAuthor">
+            {% if greeting.author %}
+                {% if greeting.author.username == 'yousilin' %}
+                    <b>小狼狼</b>
+                {% else %}
+                    {% if greeting.author.username == 'mendymeng.1206' %}
+                        <b>小兔兔</b>
+                    {% else %}
+                        <b>{{ greeting.author.username }}</b>
+                    {% endif %}
+                {% endif %}
+            {% else %}
+              An anonymous person wrote
+            {% endif %}
+                {{ greeting.date }}
+            </div>
+            <blockquote>{{ greeting.content|escape }}</blockquote>
+
+          </li>
+        {% endfor %}
+
+        </ul>
+
+      <form action="/diary/sign" method="post">{% csrf_token %}
+        <table>{{ form }}</table>
+        <input type="submit" value="Sign diary" />
+      </form>
+  </div>
 {% endblock %}

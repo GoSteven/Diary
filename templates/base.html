@@ -8,16 +8,16 @@
   </head>
 
 
+  <body>
   {% if user.is_authenticated %}
       Hello
     {{ user.username }}
     [<a href="{% url gaeauth.views.logout %}">sign out</a>]
+    {% block content %}{% endblock %}
   {% else %}
     [<a href="{% url gaeauth.views.login %}">sign in</a>]
   {% endif %}
 
-  {% block content %}{% endblock %}
 
-  <body>
   </body>
 </html>

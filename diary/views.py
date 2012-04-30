@@ -19,7 +19,7 @@ def list_greetings(request):
                                'form': CreateGreetingForm()})
 
 def create_greeting(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated():
         form = CreateGreetingForm(request.POST)
         if form.is_valid():
             greeting = form.save(commit=False)
