@@ -4,6 +4,7 @@
 
       <h2>muuuummmmaaa wanna say:</h2>
         <ul>
+        {% load markup %}
         {% for greeting in greetings %}
           <li>
             <div class="contentAuthor">
@@ -22,7 +23,7 @@
             {% endif %}
                 {{ greeting.date }}
             </div>
-            <blockquote>{{ greeting.content|escape }}</blockquote>
+            <blockquote>{{ greeting.content|markdown }}</blockquote>
 
           </li>
         {% endfor %}
