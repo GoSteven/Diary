@@ -30,6 +30,7 @@
         {% endfor %}
 
         </ul>
+        <a href="?p={{ nextpage }}">next</a>
 
       <form action="/diary/sign" method="post">{% csrf_token %}
         <table>{{ form }}</table>
