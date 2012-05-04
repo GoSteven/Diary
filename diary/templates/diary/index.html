@@ -5,6 +5,7 @@
       <h2>muuuummmmaaa wanna say:</h2>
         <ul>
         {% load markup %}
+        {% load shiftTimeZone %}
         {% for greeting in greetings %}
           <li>
             <div class="contentAuthor">
@@ -21,7 +22,7 @@
             {% else %}
               An anonymous person wrote
             {% endif %}
-                {{ greeting.date }}
+                {{ greeting.date|applytimezone }}
             </div>
             <blockquote>{{ greeting.content|markdown }}</blockquote>
 
