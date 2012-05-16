@@ -13,6 +13,25 @@
       Hello
     {{ user.username }}
     [<a href="{% url gaeauth.views.logout %}">sign out</a>]
+      <br/>
+      {% if aniv %}
+          It has been
+            <script language="JavaScript">
+            BackColor = "transparent";
+            CountActive = true;
+            CountStepper = 1;
+            LeadingZero = true;
+            DisplayFormat = "%%D%% Day, %%H%% Hour, %%M%% Minute, %%S%% Second ";
+            </script>
+          <span id="kiss" style="background-color:transparent;"><b>90</b> Day, <b>04</b> Hour, <b>03</b> Minute, <b>22</b> Second </span>
+          since our first kiss.
+          <br/>
+          It has been
+
+          <span id="merry" style="background-color:transparent;"><b>90</b> Day, <b>04</b> Hour, <b>03</b> Minute, <b>22</b> Second </span>
+          <script language="JavaScript" src="/media/countdown.js"></script>
+          since we were announce husband and wife.
+      {% endif %}
     {% block content %}{% endblock %}
   {% else %}
     [<a href="{% url gaeauth.views.login %}">sign in</a>]
