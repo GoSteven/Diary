@@ -1,11 +1,15 @@
 from django.core.cache import cache
 from django.conf import settings
 from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import send_mail
 from django.views.generic.simple import direct_to_template
 from django.http import HttpResponseRedirect
 from django.views.generic.simple import direct_to_template
+#from google.appengine.api.mail import send_mail
 from diary.forms import CreateGreetingForm
 from diary.models import Greeting
+from django.contrib.auth.models import User
+from djangoappengine.settings_base import *
 import random
 
 MEMCACHE_GREETINGS = 'greetings'
@@ -35,6 +39,9 @@ def create_greeting(request):
             if request.user.is_authenticated():
                 greeting.author = request.user
             greeting.save()
+            for user in User.objects.filter():
+                send_mail('Update on Love Diary', greeting.author.username + ':' + greeting.content, 'steven@gosteven.com',
+                    [user.email], fail_silently=False)
             for i in range(1, Greeting.objects.all().count() / items_per_page + 2):
                 cache.delete(MEMCACHE_GREETINGS + str(i))
     return HttpResponseRedirect('/diary/')
