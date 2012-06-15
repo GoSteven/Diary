@@ -1,5 +1,5 @@
 application: lovemmdiary
-version: 13
+version: 14
 runtime: python
 api_version: 1
 
@@ -18,6 +18,9 @@ handlers:
 - url: /media
   static_dir: media/
   expiration: '365d'
+
+- url: /img.*
+  script: img_blobstore.py
 
 - url: /.*
   script: djangoappengine/main/main.py
