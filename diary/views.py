@@ -11,6 +11,7 @@ from diary.models import Greeting
 from django.contrib.auth.models import User
 from djangoappengine.settings_base import *
 import random
+import markdown
 
 MEMCACHE_GREETINGS = 'greetings'
 items_per_page = 10
@@ -40,8 +41,9 @@ def create_greeting(request):
                 greeting.author = request.user
             greeting.save()
             for user in User.objects.filter():
-                send_mail('Update on Love Diary', greeting.author.username + ':' + greeting.content, 'steven@gosteven.com',
-                    [user.email], fail_silently=False)
+                if (user.email != request.user.email):
+                    send_mail('Update on Love Diary', greeting.author.username + ':' + markdown.markdown(greeting.content), 'steven@gosteven.com',
+                        [user.email], fail_silently=False)
             for i in range(1, Greeting.objects.all().count() / items_per_page + 2):
                 cache.delete(MEMCACHE_GREETINGS + str(i))
     return HttpResponseRedirect('/diary/')
